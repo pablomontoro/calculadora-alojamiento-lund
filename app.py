@@ -26,6 +26,8 @@ personas_con_alojamiento = habitaciones_iniciales - habitaciones_disponibles
 
 # No pueden quedar menos de 0
 personas_utiles = max(personas_mejor_hora - personas_con_alojamiento, 0)
+if personas_utiles <= 0:
+    st.success("🎉 ¡Tu posición en la cola es muy buena! Seguramente ya hayas conseguido alojamiento.")
 
 # Personas activas tras ajuste
 personas_activas = round(personas_utiles * porcentaje_activos / 100)
