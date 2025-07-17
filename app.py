@@ -5,7 +5,6 @@ from datetime import datetime
 
 st.set_page_config(page_title="Calculadora de alojamiento - Lund", layout="centered")
 st.title("📊 Calculadora de probabilidad de alojamiento en Lund")
-
 st.markdown("""
 Selecciona la **fecha y hora que te tocó en el sorteo**, ajusta el **% estimado de solicitantes activos**, y observa tus probabilidades de estar en el **Top 1, 2 o 3** en al menos una habitación.
 """)
