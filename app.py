@@ -9,6 +9,28 @@ st.markdown("""
 Selecciona la **fecha y hora que te tocó en el sorteo**, ajusta el **% estimado de solicitantes activos**, y observa tus probabilidades de estar en el **Top 1, 2 o 3** en al menos una habitación.
 """)
 
+with st.expander("ℹ️ ¿Cómo se calcula la probabilidad?"):
+    st.markdown("""
+Esta app estima la **probabilidad de que estés en el top 1, 2 o 3** en al menos una habitación disponible.
+
+🔢 **¿Cómo se hace el cálculo?**
+
+- Se usa una **distribución de Poisson**, que es muy común para modelar situaciones donde ocurren eventos al azar, como las solicitudes a habitaciones.
+- Se calcula la **probabilidad de que una habitación tenga 0, 1 o 2 solicitudes previas a la tuya**.
+- Luego se estima la probabilidad de que, entre todas las habitaciones disponibles, **al menos una tenga hueco en el top 1, 2 o 3**.
+
+🔁 **Factores que influyen:**
+- Tu **posición en el sorteo** (cuánto más tarde te tocó, más gente ha podido solicitar antes).
+- El **número de habitaciones** que quedan por publicar.
+- El **porcentaje de personas activas** que realmente están buscando alojamiento (ajustable con el control deslizante).
+- Se asume que cada persona solicita unas **3 habitaciones distintas**.
+
+🧠 **¿Por qué a veces da 0%?**
+Cuando hay muchas personas activas por delante y pocas habitaciones, es muy probable que **todas las habitaciones ya estén llenas en el momento en que tú llegas**, y entonces la probabilidad cae casi a 0.
+
+Esta app te ayuda a estimar si tienes buenas opciones… ¡y si deberías seguir cruzando los dedos! 🤞
+    """)
+
 fecha_inicio = datetime(2025, 7, 10, 0, 0)
 fecha = st.date_input("📅 Día que te tocó", datetime(2025, 7, 11).date())
 hora = st.time_input("⏰ Hora que te tocó", datetime(2025, 7, 11, 6, 7).time(),step=timedelta(minutes=1))
@@ -92,7 +114,7 @@ st.pyplot(fig)
 from datetime import datetime
 cierre = datetime(2025, 7, 20, 23, 59)
 quedan = cierre - datetime.now()
-st.info(f"⏳ La actual tanda de alojamineto cierra en {quedan.days} días, {quedan.seconds//3600} horas y {quedan.seconds//60} minutos.")
+st.info(f"⏳ La actual tanda de alojamineto cierra en {quedan.days} días, {quedan.seconds//3600} horas y {(quedan.seconds % 3600) // 60} minutos.")
 
 st.markdown("""
 <style>
