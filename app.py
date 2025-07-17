@@ -50,9 +50,9 @@ if len(idx) > 0:
 
     st.markdown(f"""
     ### 🎯 Probabilidades en {habitaciones_disponibles} habitaciones:
-    - 🥇 Top 1: **{p1_actual:.1%}**
-    - 🥈 Top ≤2: **{p2_actual:.1%}**
-    - 🥉 Top ≤3: **{p3_actual:.1%}**
+     🥇 Top 1: **{p1_actual:.1%}**
+     🥈 Top ≤2: **{p2_actual:.1%}**
+     🥉 Top ≤3: **{p3_actual:.1%}**
     """)
 else:
     st.warning("El número de habitaciones introducido no está en el rango calculado.")
