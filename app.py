@@ -6,12 +6,12 @@ from datetime import datetime, timedelta
 st.set_page_config(page_title="Calculadora de alojamiento - Lund", layout="centered")
 st.title("📊 Calculadora de probabilidad de alojamiento en Lund (AF Böstader)")
 st.markdown("""
-Selecciona la **fecha y hora que te tocó en el sorteo**, ajusta el **% estimado de solicitantes activos**, y observa tus probabilidades de estar en el **Top 1, 2 o 3** en al menos una habitación.
+Selecciona la **fecha y hora que te tocó en el sorteo**, ajusta el % estimado de solicitantes activos, y observa tus probabilidades de estar en el Top 1, 2 o 3 en al menos una habitación.
 """)
 
 with st.expander("ℹ️ ¿Cómo se calcula la probabilidad?"):
     st.markdown("""
-Esta app estima la **probabilidad de que estés en el top 1, 2 o 3** en al menos una habitación disponible.
+Esta app estima la probabilidad de que estés en el top 1, 2 o 3 en al menos una habitación disponible.
 
 🔢 **¿Cómo se hace el cálculo?**
 
@@ -26,7 +26,7 @@ Esta app estima la **probabilidad de que estés en el top 1, 2 o 3** en al menos
 - Se asume que cada persona solicita **3 habitaciones distintas**.
 
 🧠 **¿Por qué a veces da 0%?**
-Cuando hay muchas personas activas por delante y pocas habitaciones, es muy probable que **todas las habitaciones ya estén llenas en el momento en que tú llegas**, y entonces la probabilidad cae casi a 0.
+Cuando hay muchas personas activas por delante y pocas habitaciones, es muy probable que todas las habitaciones ya estén seleccionadas por otros en el momento en que tú llegas, y entonces la probabilidad cae casi a 0.
 
 ¡Mucha suerte en tu búsqueda de alojamiento! 🤞
     """)
