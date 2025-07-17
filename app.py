@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from datetime import datetime
 
 st.set_page_config(page_title="Calculadora de alojamiento - Lund", layout="centered")
-st.title("📊 Calculadora de probabilidad de alojamiento en Lund")
+st.title("📊 Calculadora de probabilidad de alojamiento en Lund (AF Böstader)")
 st.markdown("""
 Selecciona la **fecha y hora que te tocó en el sorteo**, ajusta el **% estimado de solicitantes activos**, y observa tus probabilidades de estar en el **Top 1, 2 o 3** en al menos una habitación.
 """)
@@ -40,7 +40,6 @@ st.markdown(f"📍 Tu posición en el sorteo es: **{posicion_usuario}**")
 st.markdown(f"👥 Personas activas antes que tú: **{personas_activas}**")
 st.markdown(f"📨 Solicitudes estimadas: **{solicitudes_totales}**")
 
-<<<<<<< HEAD
 # Interpolamos la probabilidad exacta en el número actual de habitaciones
 idx = np.where(habitaciones == habitaciones_disponibles)[0]
 if len(idx) > 0:
@@ -58,8 +57,6 @@ if len(idx) > 0:
 else:
     st.warning("El número de habitaciones introducido no está en el rango calculado.")
 
-=======
->>>>>>> f1af6e97a779311b15bd0b619f14d53b50a30e4d
 fig, ax = plt.subplots()
 ax.plot(habitaciones, prob_top1, label='Top 1', linewidth=2)
 ax.plot(habitaciones, prob_top2, label='Top ≤2', linewidth=2)
