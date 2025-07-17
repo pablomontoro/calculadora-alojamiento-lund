@@ -69,7 +69,7 @@ if len(idx) > 0:
 else:
     st.warning("El número de habitaciones introducido no está en el rango calculado.")
 
-st.markdown("<div style='margin-top: 25px;'></div>", unsafe_allow_html=True)
+st.markdown("<div style='margin-top: 35px;'></div>", unsafe_allow_html=True)
 
 fig, ax = plt.subplots()
 ax.plot(habitaciones, prob_top1, label='Top 1', linewidth=2)
