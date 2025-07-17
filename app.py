@@ -48,6 +48,8 @@ st.markdown(f"📍 Tu posición en el sorteo es: **{posicion_usuario}**")
 st.markdown(f"👥 Personas activas antes que tú: **{personas_activas}**")
 st.markdown(f"📨 Solicitudes estimadas: **{solicitudes_totales}**")
 
+st.markdown("<div style='margin-top: 25px;'></div>", unsafe_allow_html=True)
+
 # Interpolamos la probabilidad exacta en el número actual de habitaciones
 idx = np.where(habitaciones == habitaciones_disponibles)[0]
 if len(idx) > 0:
@@ -66,6 +68,8 @@ if len(idx) > 0:
     """, unsafe_allow_html=True)
 else:
     st.warning("El número de habitaciones introducido no está en el rango calculado.")
+
+st.markdown("<div style='margin-top: 25px;'></div>", unsafe_allow_html=True)
 
 fig, ax = plt.subplots()
 ax.plot(habitaciones, prob_top1, label='Top 1', linewidth=2)
