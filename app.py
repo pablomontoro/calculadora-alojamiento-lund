@@ -58,17 +58,14 @@ if personas_utiles <= 0:
 personas_activas = round(personas_utiles * porcentaje_activos / 100)
 solicitudes_totales = personas_activas * 3
 
-habitaciones = np.arange(0, 901)
-prob_top1, prob_top2, prob_top3 = [], [], []
+# Función de probabilidad realista
+def prob_topN(N, P, H):
+    lam = 3 * P / H
+    return 1 - (1 - N / (1 + lam))**3
 
-for h in habitaciones:
-    lam = solicitudes_totales / h
-    p0 = np.exp(-lam)
-    p1 = lam * np.exp(-lam)
-    p2 = (lam**2 / 2) * np.exp(-lam)
-    prob_top1.append(1 - (1 - p0) ** h)
-    prob_top2.append(1 - (1 - (p0 + p1)) ** h)
-    prob_top3.append(1 - (1 - (p0 + p1 + p2)) ** h)
+p1 = prob_topN(1, personas_activas, habitaciones_disponibles)
+p2 = prob_topN(2, personas_activas, habitaciones_disponibles)
+p3 = prob_topN(3, personas_activas, habitaciones_disponibles)
 
 # Resultados
 st.markdown(f"📍 Tu posición en el sorteo es: **{posicion_usuario}**")
@@ -77,24 +74,15 @@ st.markdown(f"📨 Solicitudes estimadas: **{solicitudes_totales}**")
 
 st.markdown("<div style='margin-top: 25px;'></div>", unsafe_allow_html=True)
 
-# Interpolamos la probabilidad exacta en el número actual de habitaciones
-idx = np.where(habitaciones == habitaciones_disponibles)[0]
-if len(idx) > 0:
-    i = idx[0]
-    p1_actual = prob_top1[i]
-    p2_actual = prob_top2[i]
-    p3_actual = prob_top3[i]
 
-    st.markdown(f"""
-    <div style="text-align: center; padding: 1rem; background-color: #f7f7f7; border-radius: 10px; width: 100%;">
-    <h3>🎯 Probabilidades en {habitaciones_disponibles} habitaciones:</h3>
-    <p style="font-size: 18px;">🥇 <strong>Top 1</strong>: {p1_actual:.1%}</p>
-    <p style="font-size: 18px;">🥈 <strong>Top ≤2</strong>: {p2_actual:.1%}</p>
-    <p style="font-size: 18px;">🥉 <strong>Top ≤3</strong>: {p3_actual:.1%}</p>
-    </div>
-    """, unsafe_allow_html=True)
-else:
-    st.warning("El número de habitaciones introducido no está en el rango calculado.")
+st.markdown(f"""
+<div style="text-align: center; padding: 1rem; background-color: #f7f7f7; border-radius: 10px; width: 100%;">
+<h3>🎯 Probabilidades en {habitaciones_disponibles} habitaciones:</h3>
+<p style="font-size: 18px;">🥇 <strong>Top 1</strong>: {p1_actual:.1%}</p>
+<p style="font-size: 18px;">🥈 <strong>Top ≤2</strong>: {p2_actual:.1%}</p>
+<p style="font-size: 18px;">🥉 <strong>Top ≤3</strong>: {p3_actual:.1%}</p>
+</div>
+""", unsafe_allow_html=True)
 
 st.markdown("<div style='margin-top: 35px;'></div>", unsafe_allow_html=True)
 
