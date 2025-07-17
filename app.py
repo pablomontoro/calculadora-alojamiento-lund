@@ -89,6 +89,11 @@ ax.grid(True)
 ax.legend()
 st.pyplot(fig)
 
+from datetime import datetime
+cierre = datetime(2025, 7, 20, 23, 59)
+quedan = cierre - datetime.now()
+st.info(f"⏳ La actual tanda de alojamineto cierra en {quedan.days} días, {quedan.seconds//3600} horas y {quedan.seconds//60} minutos.")
+
 st.markdown("""
 <style>
 .footer {
