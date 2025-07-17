@@ -20,7 +20,15 @@ habitaciones_disponibles = st.number_input("🏠 Número de habitaciones restant
 minutos_diferencia = (fecha_usuario - fecha_inicio).total_seconds() / 60
 posicion_usuario = int(round(minutos_diferencia)) + 1
 personas_mejor_hora = posicion_usuario - 1
-personas_activas = round(personas_mejor_hora * porcentaje_activos / 100)
+# Ajuste por personas con alojamiento
+habitaciones_iniciales = 900
+personas_con_alojamiento = habitaciones_iniciales - habitaciones_disponibles
+
+# No pueden quedar menos de 0
+personas_utiles = max(personas_mejor_hora - personas_con_alojamiento, 0)
+
+# Personas activas tras ajuste
+personas_activas = round(personas_utiles * porcentaje_activos / 100)
 solicitudes_totales = personas_activas * 3
 
 habitaciones = np.arange(0, 901)
@@ -49,11 +57,13 @@ if len(idx) > 0:
     p3_actual = prob_top3[i]
 
     st.markdown(f"""
-    ### 🎯 Probabilidades en {habitaciones_disponibles} habitaciones:
-     🥇 Top 1: **{p1_actual:.1%}**
-     🥈 Top ≤2: **{p2_actual:.1%}**
-     🥉 Top ≤3: **{p3_actual:.1%}**
-    """)
+    <div style="text-align: center; padding: 1rem; background-color: #f7f7f7; border-radius: 10px; width: 100%;">
+    <h3>🎯 Probabilidades en {habitaciones_disponibles} habitaciones:</h3>
+    <p style="font-size: 18px;">🥇 <strong>Top 1</strong>: {p1_actual:.1%}</p>
+    <p style="font-size: 18px;">🥈 <strong>Top ≤2</strong>: {p2_actual:.1%}</p>
+    <p style="font-size: 18px;">🥉 <strong>Top ≤3</strong>: {p3_actual:.1%}</p>
+    </div>
+    """, unsafe_allow_html=True)
 else:
     st.warning("El número de habitaciones introducido no está en el rango calculado.")
 
