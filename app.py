@@ -13,8 +13,11 @@ fecha_inicio = datetime(2025, 7, 10, 0, 0)
 fecha = st.date_input("📅 Día que te tocó", datetime(2025, 7, 11).date())
 hora = st.time_input("⏰ Hora que te tocó", datetime(2025, 7, 11, 6, 7).time(),step=timedelta(minutes=1))
 fecha_usuario = datetime.combine(fecha, hora)
+st.markdown("""
+💡 *Como no podemos saber cuántas personas que están por delante de ti siguen buscando alojamiento, puedes ajustar esta estimación aquí abajo. Esto afecta al número total de solicitudes que se esperan por habitación.*
+""")
 porcentaje_activos = st.slider("🔢 % de solicitantes activos antes que tú", 10, 100, 70, 5)
-habitaciones_disponibles = st.number_input("🏠 Número de habitaciones restantes", 50, 700, 573)
+habitaciones_disponibles = st.number_input("🏠 Número de habitaciones restantes", 50, 700, 572)
 
 # Cálculos
 minutos_diferencia = (fecha_usuario - fecha_inicio).total_seconds() / 60
