@@ -1,7 +1,7 @@
 import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
-from datetime import datetime
+from datetime import datetime, timedelta
 
 st.set_page_config(page_title="Calculadora de alojamiento - Lund", layout="centered")
 st.title("📊 Calculadora de probabilidad de alojamiento en Lund (AF Böstader)")
@@ -11,7 +11,7 @@ Selecciona la **fecha y hora que te tocó en el sorteo**, ajusta el **% estimado
 
 fecha_inicio = datetime(2025, 7, 10, 0, 0)
 fecha = st.date_input("📅 Día que te tocó", datetime(2025, 7, 11).date())
-hora = st.time_input("⏰ Hora que te tocó", datetime(2025, 7, 11, 6, 7).time())
+hora = st.time_input("⏰ Hora que te tocó", datetime(2025, 7, 11, 6, 7).time(),step=timedelta(minutes=1))
 fecha_usuario = datetime.combine(fecha, hora)
 porcentaje_activos = st.slider("🔢 % de solicitantes activos antes que tú", 10, 100, 70, 5)
 habitaciones_disponibles = st.number_input("🏠 Número de habitaciones restantes", 50, 700, 573)
