@@ -15,20 +15,20 @@ Esta app estima la **probabilidad de que estés en el top 1, 2 o 3** en al menos
 
 🔢 **¿Cómo se hace el cálculo?**
 
-- Se usa una **distribución de Poisson**, que es muy común para modelar situaciones donde ocurren eventos al azar, como las solicitudes a habitaciones.
-- Se calcula la **probabilidad de que una habitación tenga 0, 1 o 2 solicitudes previas a la tuya**.
-- Luego se estima la probabilidad de que, entre todas las habitaciones disponibles, **al menos una tenga hueco en el top 1, 2 o 3**.
+- Se usa una distribución de Poisson, que es muy común para modelar situaciones donde ocurren eventos al azar, como las solicitudes a habitaciones.
+- Se calcula la probabilidad de que una habitación tenga 0, 1 o 2 solicitudes previas a la tuya.
+- Luego se estima la probabilidad de que, entre todas las habitaciones disponibles, al menos una tenga hueco en el top 1, 2 o 3.
 
 🔁 **Factores que influyen:**
 - Tu **posición en el sorteo** (cuánto más tarde te tocó, más gente ha podido solicitar antes).
 - El **número de habitaciones** que quedan por publicar.
 - El **porcentaje de personas activas** que realmente están buscando alojamiento (ajustable con el control deslizante).
-- Se asume que cada persona solicita unas **3 habitaciones distintas**.
+- Se asume que cada persona solicita **3 habitaciones distintas**.
 
 🧠 **¿Por qué a veces da 0%?**
 Cuando hay muchas personas activas por delante y pocas habitaciones, es muy probable que **todas las habitaciones ya estén llenas en el momento en que tú llegas**, y entonces la probabilidad cae casi a 0.
 
-Esta app te ayuda a estimar si tienes buenas opciones… ¡y si deberías seguir cruzando los dedos! 🤞
+¡Mucha suerte en tu búsqueda de alojamiento! 🤞
     """)
 
 fecha_inicio = datetime(2025, 7, 10, 0, 0)
