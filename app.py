@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from datetime import datetime, timedelta
 
-st.set_page_config(page_title="Calculadora de alojamiento - Lund", layout="centered")
+st.set_page_config(page_title="Calculadora de alojamiento - Lund", layout="centered", page_icon="🏠")
 st.title("📊 Calculadora de alojamiento en Lund (AF Böstader)")
 st.markdown("""
 Selecciona la **fecha y hora que te tocó en el sorteo**, ajusta el % estimado de solicitantes activos, y observa tus probabilidades de estar en el Top 1, 2 o 3 en al menos una habitación.
