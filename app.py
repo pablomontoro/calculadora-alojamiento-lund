@@ -13,23 +13,7 @@ fecha_inicio = datetime(2025, 7, 10, 0, 0)
 fecha = st.date_input("📅 Día que te tocó", datetime(2025, 7, 11).date())
 hora = st.time_input("⏰ Hora que te tocó", datetime(2025, 7, 11, 6, 7).time(),step=timedelta(minutes=1))
 fecha_usuario = datetime.combine(fecha, hora)
-# Etiquetas superior alineadas
-st.markdown("""
-<div style="display: flex; justify-content: space-between; padding: 0 0.5rem;">
-    <span style="opacity: 0.6;">10%</span>
-    <span style="opacity: 0.6;">100%</span>
-</div>
-""", unsafe_allow_html=True)
-
-# Slider sin etiqueta visible
-porcentaje_activos = st.slider(
-    "% de solicitantes activos",
-    min_value=10,
-    max_value=100,
-    value=70,
-    step=5,
-    label_visibility="collapsed"
-)
+porcentaje_activos = st.slider("🔢 Porcentaje de solicitantes activos antes que tú", 10, 100, 70, 5)
 st.markdown("""
 💡 *Como no podemos saber cuántas personas que están por delante de ti siguen buscando alojamiento, puedes ajustar esta estimación con el porcentaje de arriba. Esto afecta al número total de solicitudes que se esperan por habitación.*
 """)
@@ -116,5 +100,5 @@ st.markdown("""
     color: #888888;
 }
 </style>
-<div class="footer">Pablo Montoro · 2025</div>
+<div class="footer">Pablo Montoro García · 2025</div>
 """, unsafe_allow_html=True)
